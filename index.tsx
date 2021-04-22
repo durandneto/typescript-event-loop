@@ -50,7 +50,6 @@ const FetchUser = (container_id) => {
       return  data.json()
     })
     .then((response: any) => {
-      console.log(response.results[0].picture)
       return {
         name: `${response.results[0].name.title}. ${
           response.results[0].name.first
