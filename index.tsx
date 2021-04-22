@@ -59,6 +59,7 @@ const FetchUser = (container_id) => {
 const btCallStack1 = document.getElementById("bt-callstack-1");
 const bteventloop1 = document.getElementById("bt-eventloop-1");
 const btcounter1 = document.getElementById("bt-counter-1");
+const bteventloophigh1 = document.getElementById("bt-eventloop-high-1");
 
 btcounter1.addEventListener("click", () => {
   btcounter1.innerHTML =   `Count (${++clickedTimes1})`;
@@ -80,6 +81,18 @@ bteventloop1.addEventListener("click", () => {
     bteventloop1.innerHTML =   `EventLoop (${first ? 0 : item})`;
     first && (btcounter1.innerHTML =   `Count (${++clickedTimes1})`)
     last && (bteventloop1.disabled = false)
+    first && (setRunningleColor("cp-1"))
+    last && (setIdleColor("cp-1"))
+  })
+})
+
+bteventloophigh1.addEventListener("click", () => {
+  setStartColor("cp-1");
+  bteventloophigh1.disabled = true;
+  useEventLoopHighPriority(Array1, ([error, item,,first, last]) => {
+    bteventloophigh1.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    first && (btcounter1.innerHTML = `Count (${++clickedTimes1})`);
+    last && (bteventloophigh1.disabled = false)
     first && (setRunningleColor("cp-1"))
     last && (setIdleColor("cp-1"))
   })
@@ -129,6 +142,7 @@ bteventloophigh2.addEventListener("click", () => {
 
 const btCallStack3 = document.getElementById("bt-callstack-3");
 const bteventloop3 = document.getElementById("bt-eventloop-3");
+const bteventloophigh3 = document.getElementById("bt-eventloop-high-3");
 const btcounter3 = document.getElementById("bt-counter-3");
 
 btcounter3.addEventListener("click", () => {
@@ -156,8 +170,21 @@ bteventloop3.addEventListener("click", () => {
   })
 })
 
+bteventloophigh3.addEventListener("click", () => {
+  setStartColor("cp-3");
+  bteventloophigh3.disabled = true;
+  useEventLoopHighPriority(Array3, ([error, item,,first, last]) => {
+    bteventloophigh3.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    first && (btcounter3.innerHTML = `Count (${++clickedTimes3})`);
+    last && (bteventloophigh3.disabled = false)
+    first && (setRunningleColor("cp-3"))
+    last && (setIdleColor("cp-3"))
+  })
+})
+
 const btCallStack4 = document.getElementById("bt-callstack-4");
 const bteventloop4 = document.getElementById("bt-eventloop-4");
+const bteventloophigh4 = document.getElementById("bt-eventloop-high-4");
 const btcounter4 = document.getElementById("bt-counter-4");
 
 btcounter4.addEventListener("click", () => {
@@ -184,6 +211,19 @@ bteventloop4.addEventListener("click", () => {
     last && (setIdleColor("cp-4"))
   })
 }) 
+
+
+bteventloophigh4.addEventListener("click", () => {
+  setStartColor("cp-4");
+  bteventloophigh4.disabled = true;
+  useEventLoopHighPriority(Array4, ([error, item,,first, last]) => {
+    bteventloophigh4.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    first && (btcounter4.innerHTML = `Count (${++clickedTimes4})`);
+    last && (bteventloophigh4.disabled = false)
+    first && (setRunningleColor("cp-4"))
+    last && (setIdleColor("cp-4"))
+  })
+})
 
 const btCallStack5 = document.getElementById("bt-callstack-5");
 const bteventloop5 = document.getElementById("bt-eventloop-5");
