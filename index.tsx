@@ -1,5 +1,19 @@
 import "./style.css"
+
 import {useEventLoopLowPriority, useCallStack, useEventLoopHighPriority} from "./EventLoopMap"
+
+var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+
 let clickedTimes1 = 0;
 let clickedTimes2 = 0;
 let clickedTimes3 = 0;

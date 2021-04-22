@@ -44,7 +44,12 @@ html {
   border: 1px solid #91c9ff;
   transition: 0.5s ease-in-out;
 }
-
+#camera-container {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 svg {
   position: absolute;
   left: 0;
