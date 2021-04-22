@@ -18,7 +18,7 @@ const setStartColor = (id) => {
   document.getElementById(id).style.backgroundColor = "orange";
 }
 const setIdleColor = (id) => {
-  document.getElementById(id).style.backgroundColor = "white";
+  document.getElementById(id).style.backgroundColor = "#458fd4";
 }
 const setRunningleColor = (id) => {
   document.getElementById(id).style.backgroundColor = "green";
@@ -67,34 +67,37 @@ btcounter1.addEventListener("click", () => {
 
 btCallStack1.addEventListener("click", () => {
   btCallStack1.disabled = true;
+  setStartColor("bt-callstack-1");
   useCallStack(Array1, ([error, item,,first, last]) => {
     btCallStack1.innerHTML =   `CallStack (${first ? 0 : item})`;
     first && (btcounter1.innerHTML =   `Count (${++clickedTimes1})`)
     last && (btCallStack1.disabled = false)
+    first && (setRunningleColor("bt-callstack-1"))
+    last && (setIdleColor("bt-callstack-1"))
   })
 })
 
 bteventloop1.addEventListener("click", () => {
-  setStartColor("cp-1");
+  setStartColor("bt-eventloop-1");
   bteventloop1.disabled = true;
   useEventLoopLowPriority(Array1, ([error, item,,first, last]) => {
     bteventloop1.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter1.innerHTML =   `Count (${++clickedTimes1})`)
     last && (bteventloop1.disabled = false)
-    first && (setRunningleColor("cp-1"))
-    last && (setIdleColor("cp-1"))
+    first && (setRunningleColor("bt-eventloop-1"))
+    last && (setIdleColor("bt-eventloop-1"))
   })
 })
 
 bteventloophigh1.addEventListener("click", () => {
-  setStartColor("cp-1");
+  setStartColor("bt-eventloop-high-1");
   bteventloophigh1.disabled = true;
   useEventLoopHighPriority(Array1, ([error, item,,first, last]) => {
     bteventloophigh1.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter1.innerHTML = `Count (${++clickedTimes1})`);
     last && (bteventloophigh1.disabled = false)
-    first && (setRunningleColor("cp-1"))
-    last && (setIdleColor("cp-1"))
+    first && (setRunningleColor("bt-eventloop-high-1"))
+    last && (setIdleColor("bt-eventloop-high-1"))
   })
 })
 
@@ -108,35 +111,38 @@ btcounter2.addEventListener("click", () => {
 })
 
 btCallStack2.addEventListener("click", () => {
+  setStartColor("bt-callstack-2");
   btCallStack2.disabled = true;
   useCallStack(Array2, ([error, item,,first, last]) => {
     btCallStack2.innerHTML =   `CallStack (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (btCallStack2.disabled = false)
+    first && (setRunningleColor("bt-callstack-2"))
+    last && (setIdleColor("bt-callstack-2"))
   })
 })
 
 bteventloop2.addEventListener("click", () => {
-  setStartColor("cp-2");
+  setStartColor("bt-eventloop-2");
   bteventloop2.disabled = true;
   useEventLoopLowPriority(Array2, ([error, item,,first, last]) => {
     bteventloop2.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloop2.disabled = false)
-    first && (setRunningleColor("cp-2"))
-    last && (setIdleColor("cp-2"))
+    first && (setRunningleColor("bt-eventloop-2"))
+    last && (setIdleColor("bt-eventloop-2"))
   })
 })
 
 bteventloophigh2.addEventListener("click", () => {
-  setStartColor("cp-2");
+  setStartColor("bt-eventloop-high-2");
   bteventloophigh2.disabled = true;
   useEventLoopHighPriority(Array2, ([error, item,,first, last]) => {
     bteventloophigh2.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloophigh2.disabled = false)
-    first && (setRunningleColor("cp-2"))
-    last && (setIdleColor("cp-2"))
+    first && (setRunningleColor("bt-eventloop-high-2"))
+    last && (setIdleColor("bt-eventloop-high-2"))
   })
 })
 
@@ -150,11 +156,14 @@ btcounter3.addEventListener("click", () => {
 })
 
 btCallStack3.addEventListener("click", () => {
+  setStartColor("bt-callstack-3");
   btCallStack3.disabled = true;
   useCallStack(Array3, ([error, item,,first, last]) => {
     btCallStack3.innerHTML =   `CallStack (${first ? 0 : item})`;
     first && (btcounter3.innerHTML =   `Count (${++clickedTimes3})`);
     last && (btCallStack3.disabled = false)
+    first && (setRunningleColor("bt-callstack-3"))
+    last && (setIdleColor("bt-callstack-3"))
   })
 })
 
@@ -192,11 +201,14 @@ btcounter4.addEventListener("click", () => {
 })
 
 btCallStack4.addEventListener("click", () => {
+  setStartColor("bt-callstack-4");
   btCallStack4.disabled = true;
   useCallStack(Array4, ([error, item,,first, last]) => {
     btCallStack4.innerHTML =   `CallStack (${first ? 0 : item})`;
     first && (btcounter4.innerHTML =   `Count (${++clickedTimes4})`);
     last && (btCallStack4.disabled = false)
+    first && (setRunningleColor("bt-callstack-4"))
+    last && (setIdleColor("bt-callstack-4"))
   })
 })
 
