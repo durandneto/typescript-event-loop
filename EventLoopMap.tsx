@@ -27,7 +27,6 @@ export function useEventLoopLowPriority<useEventLoopInterface>(arr, _cb, minimal
   let length = arr.length
   const r = (iScoped) => {
 
-  // do {
     let error = null;
     const item = arr[iScoped];
     const first = iScoped===0
@@ -46,7 +45,6 @@ export function useEventLoopLowPriority<useEventLoopInterface>(arr, _cb, minimal
   }
   r(index)
 
-  // } while (--length)
 };
 
 export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void  {
@@ -58,28 +56,10 @@ export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void 
     throw new Error("The second param most be a function")
   }
 
-  // let index = 0;
-  // let length = arr.length
-  // do {
-  //   let error = null;
-  //   const item = arr[index];
-  //   const first = index===0;
-  //   const last = index===arr.length-1;
-
-  //   Promise.resolve(1).then(function(resolve) {
-  //     _cb([error, item, index, first, last, arr]);
-  //   })
-
-  //   index ++;
-
-  // } while (--length)
-
-
   let index = 0;
   let length = arr.length
   const r = (iScoped) => {
 
-  // do {
     let error = null;
     const item = arr[iScoped];
     const first = iScoped===0
@@ -88,7 +68,7 @@ export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void 
     if (!last) {
        Promise.resolve(1).then(function(resolve) {
         _cb([error, item, iScoped, first, last, arr]);
-        r(iScoped);
+        r(++iScoped);
       })
     } else {
       Promise.resolve(1).then(function(resolve) {
