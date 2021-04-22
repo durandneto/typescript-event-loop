@@ -4,11 +4,15 @@ let clickedTimes1 = 0;
 let clickedTimes2 = 0;
 let clickedTimes3 = 0;
 let clickedTimes4 = 0;
+let clickedTimes5 = 0;
+let clickedTimes6 = 0;
+let clickedTimes7 = 0;
 
 const Array1 = [...new Array(1000)].map((item, index)=> index + 1);
 const Array2 = [...new Array(10000)].map((item, index)=> index + 1);
 const Array3 = [...new Array(50000)].map((item, index)=> index + 1);
-const Array4 = [...new Array(1000000)].map((item, index)=> index + 1);
+const Array4 = [...new Array(100000)].map((item, index)=> index + 1);
+const Array_of_ONE_MILLION_kill_the_browser = [...new Array(100000)].map((item, index)=> index + 1);
 
 const setStartColor = (id) => {
   document.getElementById(id).style.backgroundColor = "orange";
@@ -135,5 +139,33 @@ bteventloop4.addEventListener("click", () => {
     first && (setRunningleColor("cp-4"))
     last && (setIdleColor("cp-4"))
   })
+}) 
+
+const btCallStack5 = document.getElementById("bt-callstack-5");
+const bteventloop5 = document.getElementById("bt-eventloop-5");
+const btcounter5 = document.getElementById("bt-counter-5");
+
+btcounter5.addEventListener("click", () => {
+  btcounter5.innerHTML =   `Count (${++clickedTimes5})`;
 })
 
+btCallStack5.addEventListener("click", () => {
+  btCallStack5.disabled = true;
+  useCallStack(Array_of_ONE_MILLION_kill_the_browser, ([error, item,,first, last]) => {
+    btCallStack5.innerHTML =   `CallStack (${first ? 0 : item})`;
+    first && (btcounter5.innerHTML =   `Count (${++clickedTimes5})`);
+    last && (btCallStack5.disabled = false)
+  })
+})
+
+bteventloop5.addEventListener("click", () => {
+  setStartColor("cp-5");
+  bteventloop5.disabled = true
+  useEventLoopLowPriority(Array_of_ONE_MILLION_kill_the_browser, ([error, item,,first, last]) => {
+    bteventloop5.innerHTML =   `EventLoop (${first ? 0 : item})`;
+    first && (btcounter5.innerHTML =   `Count (${++clickedTimes5})`);
+    last && (bteventloop5.disabled = false)
+    first && (setRunningleColor("cp-5"))
+    last && (setIdleColor("cp-5"))
+  })
+}) 

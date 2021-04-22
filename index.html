@@ -1,5 +1,29 @@
 <h1>Event Loop vs Call Stack</h1>
-<div id="wrapper">
+
+<div class="wrapper">
+  <div class="kill_browser" id="cp-6">
+    <p>Call HTTP Request</p>
+    <button id="bt-call-7">Get User</button>
+    <div id="call-user-result-1"></div>
+  </div>
+  <div class="kill_browser" id="cp-7">
+    <p>Call HTTP Request</p>
+    <button id="bt-call-7">Get User</button>
+    <div id="call-user-result-7"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="kill_browser" id="cp-5">
+    <h3>It'll Kill the Browser</h3>
+    <p>Run it 1000000 times</p>
+    <button id="bt-callstack-5">CallStack (0)</button>
+    <button id="bt-eventloop-5">EventLoop (0)</button>
+    <button id="bt-counter-5">Count (0)</button>
+  </div>
+</div>
+
+<div class="wrapper">
   <div class="component" id="cp-1">
     <p>Run it 1000 times</p>
     <button id="bt-callstack-1">CallStack (0)</button>
@@ -19,7 +43,7 @@
     <button id="bt-counter-3">Count (0)</button>
   </div>
   <div class="component" id="cp-4">
-    <p>Run it 1000000 times</p>
+    <p>Run it 100000 times</p>
     <button id="bt-callstack-4">CallStack (0)</button>
     <button id="bt-eventloop-4">EventLoop (0)</button>
     <button id="bt-counter-4">Count (0)</button>
