@@ -40,6 +40,7 @@ html {
 .btn {
   cursor: pointer;
   background: #458fd4;
+  color: #fff;
   border: 1px solid #91c9ff;
   transition: 0.5s ease-in-out;
 }

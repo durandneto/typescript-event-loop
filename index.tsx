@@ -90,7 +90,7 @@ bteventloophigh1.addEventListener("click", () => {
   setStartColor("cp-1");
   bteventloophigh1.disabled = true;
   useEventLoopHighPriority(Array1, ([error, item,,first, last]) => {
-    bteventloophigh1.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    bteventloophigh1.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter1.innerHTML = `Count (${++clickedTimes1})`);
     last && (bteventloophigh1.disabled = false)
     first && (setRunningleColor("cp-1"))
@@ -132,7 +132,7 @@ bteventloophigh2.addEventListener("click", () => {
   setStartColor("cp-2");
   bteventloophigh2.disabled = true;
   useEventLoopHighPriority(Array2, ([error, item,,first, last]) => {
-    bteventloophigh2.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    bteventloophigh2.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloophigh2.disabled = false)
     first && (setRunningleColor("cp-2"))
@@ -174,7 +174,7 @@ bteventloophigh3.addEventListener("click", () => {
   setStartColor("cp-3");
   bteventloophigh3.disabled = true;
   useEventLoopHighPriority(Array3, ([error, item,,first, last]) => {
-    bteventloophigh3.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    bteventloophigh3.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter3.innerHTML = `Count (${++clickedTimes3})`);
     last && (bteventloophigh3.disabled = false)
     first && (setRunningleColor("cp-3"))
@@ -217,7 +217,7 @@ bteventloophigh4.addEventListener("click", () => {
   setStartColor("cp-4");
   bteventloophigh4.disabled = true;
   useEventLoopHighPriority(Array4, ([error, item,,first, last]) => {
-    bteventloophigh4.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    bteventloophigh4.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter4.innerHTML = `Count (${++clickedTimes4})`);
     last && (bteventloophigh4.disabled = false)
     first && (setRunningleColor("cp-4"))
