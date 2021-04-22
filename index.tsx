@@ -78,7 +78,7 @@ bteventloop1.addEventListener("click", () => {
   setStartColor("cp-1");
   bteventloop1.disabled = true;
   useEventLoopLowPriority(Array1, ([error, item,,first, last]) => {
-    bteventloop1.innerHTML =   `EventLoop (${first ? 0 : item})`;
+    bteventloop1.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter1.innerHTML =   `Count (${++clickedTimes1})`)
     last && (bteventloop1.disabled = false)
     first && (setRunningleColor("cp-1"))
@@ -120,7 +120,7 @@ bteventloop2.addEventListener("click", () => {
   setStartColor("cp-2");
   bteventloop2.disabled = true;
   useEventLoopLowPriority(Array2, ([error, item,,first, last]) => {
-    bteventloop2.innerHTML =   `EventLoop (${first ? 0 : item})`;
+    bteventloop2.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloop2.disabled = false)
     first && (setRunningleColor("cp-2"))
@@ -162,7 +162,7 @@ bteventloop3.addEventListener("click", () => {
   setStartColor("cp-3");
   bteventloop3.disabled = true
   useEventLoopLowPriority(Array3, ([error, item,,first, last]) => {
-    bteventloop3.innerHTML =   `EventLoop (${first ? 0 : item})`;
+    bteventloop3.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter3.innerHTML =   `Count (${++clickedTimes3})`);
     last && (bteventloop3.disabled = false)
     first && (setRunningleColor("cp-3"))
@@ -204,7 +204,7 @@ bteventloop4.addEventListener("click", () => {
   setStartColor("cp-4");
   bteventloop4.disabled = true
   useEventLoopLowPriority(Array4, ([error, item,,first, last]) => {
-    bteventloop4.innerHTML =   `EventLoop (${first ? 0 : item})`;
+    bteventloop4.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter4.innerHTML =   `Count (${++clickedTimes4})`);
     last && (bteventloop4.disabled = false)
     first && (setRunningleColor("cp-4"))
