@@ -25,19 +25,28 @@ export function useEventLoopLowPriority<useEventLoopInterface>(arr, _cb, minimal
 
   let index = 0;
   let length = arr.length
-  do {
+  const r = (iScoped) => {
+
+  // do {
     let error = null;
-    const item = arr[index];
-    const first = index===0
-    const last = index===arr.length-1
+    const item = arr[iScoped];
+    const first = iScoped===0
+    const last = iScoped===length-1
+ 
+    if (!last) {
+      setTimeout(() => {
+        _cb([error, item, iScoped, first, last, arr]);
+        r(++iScoped);
+      }, minimalTime);
+    } else {
+      setTimeout(() => {
+        _cb([error, item, iScoped, first, last, arr]);
+      }, minimalTime);
+    }
+  }
+  r(index)
 
-    setTimeout(() => {
-      _cb([error, item, index, first, last, arr]);
-    }, minimalTime);
-
-    index ++;
-
-  } while (--length)
+  // } while (--length)
 };
 
 export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void  {
@@ -49,21 +58,45 @@ export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void 
     throw new Error("The second param most be a function")
   }
 
+  // let index = 0;
+  // let length = arr.length
+  // do {
+  //   let error = null;
+  //   const item = arr[index];
+  //   const first = index===0;
+  //   const last = index===arr.length-1;
+
+  //   Promise.resolve(1).then(function(resolve) {
+  //     _cb([error, item, index, first, last, arr]);
+  //   })
+
+  //   index ++;
+
+  // } while (--length)
+
+
   let index = 0;
   let length = arr.length
-  do {
+  const r = (iScoped) => {
+
+  // do {
     let error = null;
-    const item = arr[index];
-    const first = index===0;
-    const last = index===arr.length-1;
-
-    Promise.resolve(1).then(function(resolve) {
-      _cb([error, item, index, first, last, arr]);
-    })
-
-    index ++;
-
-  } while (--length)
+    const item = arr[iScoped];
+    const first = iScoped===0
+    const last = iScoped===length-1
+ 
+    if (!last) {
+       Promise.resolve(1).then(function(resolve) {
+        _cb([error, item, iScoped, first, last, arr]);
+        r(iScoped);
+      })
+    } else {
+      Promise.resolve(1).then(function(resolve) {
+        _cb([error, item, iScoped, first, last, arr]);
+      })
+    }
+  }
+  r(index)
 };
 
 export function useCallStack<useCallStackInterface>(arr: Array<unknown>, _cb){
