@@ -12,7 +12,7 @@ const Array1 = [...new Array(1000)].map((item, index)=> index + 1);
 const Array2 = [...new Array(10000)].map((item, index)=> index + 1);
 const Array3 = [...new Array(50000)].map((item, index)=> index + 1);
 const Array4 = [...new Array(100000)].map((item, index)=> index + 1);
-const Array_of_ONE_MILLION_kill_the_browser = [...new Array(100000)].map((item, index)=> index + 1);
+const Array_of_ONE_MILLION_kill_the_browser = [...new Array(1000000)].map((item, index)=> index + 1);
 
 const setStartColor = (id) => {
   document.getElementById(id).style.backgroundColor = "orange";
@@ -23,6 +23,37 @@ const setIdleColor = (id) => {
 const setRunningleColor = (id) => {
   document.getElementById(id).style.backgroundColor = "green";
 }
+
+const FetchUser = (container_id) => {
+
+  const avatar = document.getElementById(`${container_id}-avatar`);
+  const name = document.getElementById(`${container_id}-name`);
+
+  setStartColor(container_id)
+    fetch("https://randomuser.me/api/")
+    .then((data: any) =>{
+      setRunningleColor(container_id)
+      return  data.json()
+    })
+    .then((response: any) => {
+      console.log(response.results[0].picture)
+      return {
+        name: `${response.results[0].name.title}. ${
+          response.results[0].name.first
+        } ${response.results[0].name.last}`,
+        avatar: response.results[0].picture.large
+      };
+    })
+    .then(user => {
+      name.innerHTML = user.name;
+      avatar.innerHTML = "";
+      avatar.style.backgroundImage = `url(${user.avatar})`
+      setIdleColor(container_id)
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  };
 
 // Write Javascript code!
 const btCallStack1 = document.getElementById("bt-callstack-1");
@@ -74,7 +105,7 @@ btCallStack2.addEventListener("click", () => {
 bteventloop2.addEventListener("click", () => {
   setStartColor("cp-2");
   bteventloop2.disabled = true;
-  useEventLoopHighPriority(Array2, ([error, item,,first, last]) => {
+  useEventLoopLowPriority(Array2, ([error, item,,first, last]) => {
     bteventloop2.innerHTML =   `EventLoop (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloop2.disabled = false)
@@ -144,16 +175,19 @@ bteventloop4.addEventListener("click", () => {
 const btCallStack5 = document.getElementById("bt-callstack-5");
 const bteventloop5 = document.getElementById("bt-eventloop-5");
 const btcounter5 = document.getElementById("bt-counter-5");
+const elresult5  = document.getElementById("cp-5-eventloop");
+const counterresult5  = document.getElementById("cp-5-counter");
+const callstackresult5  = document.getElementById("cp-5-callstack");
 
 btcounter5.addEventListener("click", () => {
-  btcounter5.innerHTML =   `Count (${++clickedTimes5})`;
+  counterresult5.innerHTML =  ++clickedTimes5
 })
 
 btCallStack5.addEventListener("click", () => {
   btCallStack5.disabled = true;
   useCallStack(Array_of_ONE_MILLION_kill_the_browser, ([error, item,,first, last]) => {
-    btCallStack5.innerHTML =   `CallStack (${first ? 0 : item})`;
-    first && (btcounter5.innerHTML =   `Count (${++clickedTimes5})`);
+    callstackresult5.innerHTML =   first ? 0 : item;
+    first && (counterresult5.innerHTML =  ++clickedTimes5)
     last && (btCallStack5.disabled = false)
   })
 })
@@ -162,10 +196,23 @@ bteventloop5.addEventListener("click", () => {
   setStartColor("cp-5");
   bteventloop5.disabled = true
   useEventLoopLowPriority(Array_of_ONE_MILLION_kill_the_browser, ([error, item,,first, last]) => {
-    bteventloop5.innerHTML =   `EventLoop (${first ? 0 : item})`;
-    first && (btcounter5.innerHTML =   `Count (${++clickedTimes5})`);
-    last && (bteventloop5.disabled = false)
+    elresult5.innerHTML =  first ? 0 : item;
+
+    first && (counterresult5.innerHTML =  ++clickedTimes5)
     first && (setRunningleColor("cp-5"))
+
+    last && (bteventloop5.disabled = false)
     last && (setIdleColor("cp-5"))
   })
 }) 
+const btcall6 = document.getElementById("bt-call-6");
+
+btcall6.addEventListener("click", () => {
+  FetchUser("cp-6");
+})
+
+const btcall7 = document.getElementById("bt-call-7");
+
+btcall7.addEventListener("click", () => {
+  FetchUser("cp-7");
+})

@@ -1,29 +1,64 @@
 <h1>Event Loop vs Call Stack</h1>
 
-<div class="wrapper">
-  <div class="kill_browser" id="cp-6">
-    <p>Call HTTP Request</p>
-    <button id="bt-call-7">Get User</button>
-    <div id="call-user-result-1"></div>
+<h4>Call HTTP Request</h4>
+<div class="app-wrapper">
+  <div class="http_request" id="cp-6">
+    <div>
+      <div id="cp-6-avatar" class="call_user_result_avatar">No Avatar</div>
+      <div id="cp-6-name" class="call_user_result_name">Name: no name</div>
+    </div>
+    <button id="bt-call-6">Get User</button>
   </div>
-  <div class="kill_browser" id="cp-7">
-    <p>Call HTTP Request</p>
+  <div class="http_request" id="cp-7">
+    <div>
+      <div id="cp-7-avatar" class="call_user_result_avatar">No Avatar</div>
+      <div id="cp-7-name" class="call_user_result_name">Name: no name</div>
+    </div>
     <button id="bt-call-7">Get User</button>
-    <div id="call-user-result-7"></div>
   </div>
 </div>
 
-<div class="wrapper">
+<h4>Expensive loops or data processing</h4>
+<div class="app-wrapper">
   <div class="kill_browser" id="cp-5">
-    <h3>It'll Kill the Browser</h3>
-    <p>Run it 1000000 times</p>
-    <button id="bt-callstack-5">CallStack (0)</button>
-    <button id="bt-eventloop-5">EventLoop (0)</button>
-    <button id="bt-counter-5">Count (0)</button>
+    <p>It'll KILL your Application. Run it 1000000 times</p>
+    <div class="app-container">
+      <div class="left">
+        <div class="column">
+          <button class="btn"  id="bt-callstack-5">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>Counter</span>
+          </button>
+          <div class="text">Call Stack (<span class="text_result"  id="cp-5-callstack">0</span>)</div>
+        </div>
+        <div class="column">
+          <button class="btn"  id="bt-eventloop-5">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>Counter</span>
+          </button>
+          <div class="text">Event Loop (<span class="text_result"  id="cp-5-eventloop">0</span>)</div>
+        </div>
+        <div class="column">
+          <button class="btn"  id="bt-counter-5">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>Counter</span>
+          </button>
+        </div>
+      </div>
+      <div class="right">(<span class="text_result" id="cp-5-counter">0</span>)</div>
+    </div>
   </div>
 </div>
-
-<div class="wrapper">
+<div class="app-wrapper">
   <div class="component" id="cp-1">
     <p>Run it 1000 times</p>
     <button id="bt-callstack-1">CallStack (0)</button>
@@ -49,3 +84,5 @@
     <button id="bt-counter-4">Count (0)</button>
   </div>
 </div>
+
+<div class="animation"></div>

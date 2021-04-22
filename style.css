@@ -1,17 +1,126 @@
-.wrapper {
-  display: flex;
+@import url("https://fonts.googleapis.com/css?family=Lato:100&display=swap");
+
+.animation {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
 
-.wrapper .component {
+@keyframes example {
+  0% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+  50% {
+    background-color: yellow;
+    left: 200px;
+    top: 0px;
+  }
+  100% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  color: rgb(65, 61, 61);
+}
+
+.btn {
+  cursor: pointer;
+  background: #458fd4;
+  border: 1px solid #91c9ff;
+  transition: 0.5s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 0.5s ease-in-out;
+}
+
+.btn:hover {
+  transition: 0.5s ease-in-out;
+  background: #22da6e;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+}
+
+.app-wrapper {
+  display: flex;
+}
+.text {
+  font-size: 12px;
+}
+.left {
+  width: 80%;
+}
+.right {
+  width: 20%;
+  font-size: 35px;
+  color: #458fd4;
+}
+
+.app-container {
+  display: flex;
+}
+.column {
+  display: flex;
+  align-items: baseline;
+}
+
+.app-wrapper .component {
   width: 25%;
   border: solid 1px #ebebeb;
   margin: 0.5%;
   padding: 0.5%;
 }
 
-.wrapper .kill_browser {
+.app-wrapper .kill_browser {
   width: 100%;
   border: solid 1px #ebebeb;
   margin: 0.5%;
   padding: 0.5%;
+}
+
+.app-wrapper .http_request {
+  width: 100%;
+  border: solid 1px #ebebeb;
+  margin: 0.5%;
+  padding: 0.5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-wrapper .http_request .call_user_result_avatar {
+  width: 100px;
+  height: 100px;
+  border: solid 1px #ebebeb;
+  margin: 0.5%;
+  padding: 0.5%;
+  background-color: #fbfbfb;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
