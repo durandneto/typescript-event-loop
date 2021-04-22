@@ -58,25 +58,19 @@ export function useEventLoopHighPriority<useCallStackInterface>(arr, _cb): void 
 
   let index = 0;
   let length = arr.length
-  const r = (iScoped) => {
-
+  do {
     let error = null;
-    const item = arr[iScoped];
-    const first = iScoped===0
-    const last = iScoped===length-1
- 
-    if (!last) {
-       Promise.resolve(1).then(function(resolve) {
-        _cb([error, item, iScoped, first, last, arr]);
-        r(++iScoped);
-      })
-    } else {
-      Promise.resolve(1).then(function(resolve) {
-        _cb([error, item, iScoped, first, last, arr]);
-      })
-    }
-  }
-  r(index)
+    const item = arr[index];
+    const first = index===0;
+    const last = index===arr.length-1;
+
+    setTimeout(() => {
+      _cb([error, item, index, first, last, arr]);
+    }, 0);
+
+    index ++;
+
+  } while (--length)
 };
 
 export function useCallStack<useCallStackInterface>(arr: Array<unknown>, _cb){

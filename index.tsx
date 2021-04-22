@@ -87,6 +87,7 @@ bteventloop1.addEventListener("click", () => {
 
 const btCallStack2 = document.getElementById("bt-callstack-2");
 const bteventloop2 = document.getElementById("bt-eventloop-2");
+const bteventloophigh2 = document.getElementById("bt-eventloop-high-2");
 const btcounter2 = document.getElementById("bt-counter-2");
 
 btcounter2.addEventListener("click", () => {
@@ -109,6 +110,18 @@ bteventloop2.addEventListener("click", () => {
     bteventloop2.innerHTML =   `EventLoop (${first ? 0 : item})`;
     first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
     last && (bteventloop2.disabled = false)
+    first && (setRunningleColor("cp-2"))
+    last && (setIdleColor("cp-2"))
+  })
+})
+
+bteventloophigh2.addEventListener("click", () => {
+  setStartColor("cp-2");
+  bteventloophigh2.disabled = true;
+  useEventLoopHighPriority(Array2, ([error, item,,first, last]) => {
+    bteventloophigh2.innerHTML =   `EventLoop HP (${first ? 0 : item})`;
+    first && (btcounter2.innerHTML = `Count (${++clickedTimes2})`);
+    last && (bteventloophigh2.disabled = false)
     first && (setRunningleColor("cp-2"))
     last && (setIdleColor("cp-2"))
   })
