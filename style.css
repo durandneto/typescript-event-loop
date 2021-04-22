@@ -1,0 +1,10 @@
+#wrapper {
+  display: flex;
+}
+
+#wrapper .component {
+  width: 22%;
+  border: solid 1px #ebebeb;
+  margin: 0.5%;
+  padding: 0.5%;
+}
