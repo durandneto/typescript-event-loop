@@ -168,26 +168,26 @@ btCallStack3.addEventListener("click", () => {
 })
 
 bteventloop3.addEventListener("click", () => {
-  setStartColor("cp-3");
+  setStartColor("bt-eventloop-3");
   bteventloop3.disabled = true
   useEventLoopLowPriority(Array3, ([error, item,,first, last]) => {
     bteventloop3.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter3.innerHTML =   `Count (${++clickedTimes3})`);
     last && (bteventloop3.disabled = false)
-    first && (setRunningleColor("cp-3"))
-    last && (setIdleColor("cp-3"))
+    first && (setRunningleColor("bt-eventloop-3"))
+    last && (setIdleColor("bt-eventloop-3"))
   })
 })
 
 bteventloophigh3.addEventListener("click", () => {
-  setStartColor("cp-3");
+  setStartColor("bt-eventloop-high-3");
   bteventloophigh3.disabled = true;
   useEventLoopHighPriority(Array3, ([error, item,,first, last]) => {
     bteventloophigh3.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter3.innerHTML = `Count (${++clickedTimes3})`);
     last && (bteventloophigh3.disabled = false)
-    first && (setRunningleColor("cp-3"))
-    last && (setIdleColor("cp-3"))
+    first && (setRunningleColor("bt-eventloop-high-3"))
+    last && (setIdleColor("bt-eventloop-high-3"))
   })
 })
 
@@ -213,27 +213,27 @@ btCallStack4.addEventListener("click", () => {
 })
 
 bteventloop4.addEventListener("click", () => {
-  setStartColor("cp-4");
+  setStartColor("bt-eventloop-4");
   bteventloop4.disabled = true
   useEventLoopLowPriority(Array4, ([error, item,,first, last]) => {
     bteventloop4.innerHTML =   `EventLoop Low Priority (${first ? 0 : item})`;
     first && (btcounter4.innerHTML =   `Count (${++clickedTimes4})`);
     last && (bteventloop4.disabled = false)
-    first && (setRunningleColor("cp-4"))
-    last && (setIdleColor("cp-4"))
+    first && (setRunningleColor("bt-eventloop-4"))
+    last && (setIdleColor("bt-eventloop-4"))
   })
 }) 
 
 
 bteventloophigh4.addEventListener("click", () => {
-  setStartColor("cp-4");
+  setStartColor("bt-eventloop-high-4");
   bteventloophigh4.disabled = true;
   useEventLoopHighPriority(Array4, ([error, item,,first, last]) => {
     bteventloophigh4.innerHTML =   `EventLoop High Priority (${first ? 0 : item})`;
     first && (btcounter4.innerHTML = `Count (${++clickedTimes4})`);
     last && (bteventloophigh4.disabled = false)
-    first && (setRunningleColor("cp-4"))
-    last && (setIdleColor("cp-4"))
+    first && (setRunningleColor("bt-eventloop-high-4"))
+    last && (setIdleColor("bt-eventloop-high-4"))
   })
 })
 
